@@ -1,0 +1,130 @@
+v
+
+/* Quita los bordes al usar la tecla tabulación si no está en modo "tabbing" */
+body:not(.is-tabbing) * {
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Asegura que estos elementos HTML antiguos/semanáticos funcionen bien en todos los navegadores */
+article,
+aside,
+header,
+nav,
+section {
+    display: block;
+}
+
+/* Variables CSS globales para colores y fuente principal */
+:root {
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    font-family: 'GT America', sans-serif;
+
+}
+
+@font-face {
+    font-family: 'GT America', sans-serif;
+    src: url('/assets/fonts/GT-America-Standard-Regular.woff2') format('woff2'),
+        url('/assets/fonts/GT-America-Standard-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Tamaño de fuente base: 1rem = 16px */
+html {
+    font-size: 16px;
+}
+
+/* Estilo base para el header */
+.header {
+    display: block;
+    unicode-bidi: isolate;
+    background-color: var(--white);
+    font-family: var(--font-primary);
+}
+
+/* Contenedor principal del header, permite animaciones suaves */
+.header__container {
+    height: 100%;
+    transition: all 0.4s linear 0.1s;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* El nav se centra, tiene ancho máximo y organiza elementos en fila */
+.header__nav {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 1.2rem 2rem;
+}
+
+/* Logo de la izquierda */
+.cmp__logo {
+    width: 7.938rem;
+}
+
+.cmp__logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* Contenedor del logo + menú (izquierda) */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    /* Separación entre logo y menú */
+}
+
+/* Menú horizontal sin viñetas */
+.menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enlaces del menú */
+.menu-item-header a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 0.75rem;
+    /* 12px */
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out;
+}
+
+.menu-item-header a:hover {
+    color: #999;
+}
+
+/* Contenedor de los iconos (derecha) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.header-right button {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--black);
+    padding: 0.4rem;
+    transition: transform 0.2s ease;
+}
+
+.header-right button:hover {
+    transform: scale(1.1);
+    color: #777;
+}
