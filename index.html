@@ -1,66 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+<html lang="en"> <!-- Idioma predeterminado del documento -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRADA United States Official Online</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8"> <!-- Codificación de caracteres (UTF-8 recomendado) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Escalado responsive para móviles -->
+    <title>PRADA United States Official Online</title> <!-- Título que aparece en la pestaña del navegador -->
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Enlace al archivo CSS externo -->
 </head>
 
 <body>
+    <!-- Contenedor principal del header -->
     <header class="main-header">
-        <div data-ta-id="menu-header-desktop" class="menu-header-desktop">
-            <div class="header_container">
-                <header class="navbar">
-                    <div class="header-left">
-                        <div class="cmp__logo">
-                            <a href="index.html">
-                                <img src="/assets/logos/logo-prada.svg" alt="logo-prada" />
-                            </a>
-                        </div>
-
-                        <ul class="menu">
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">REGALOS</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">MUJER</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">HOMBRE</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">BOLSOS</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">LÍNEA ROSSA</span></a>
-                            </li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">JOYERÍA
-                                        ELEGANTE</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">HOGAR</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">BELLEZA
-                                        YFRAGANCIAS</span></a></li>
-                            <li class="menu-item-header"><a href="#"><span class="menu_linktext">PRADASPHERE</span></a>
-                            </li>
-                        </ul>
-                        <div class="header-right">
-                            <span class="search">
-
-                            </span>
-                            <a class="love">
-
-                            </a>
-                            <a class="buy">
-
-                            </a>
-                            <a class="utils">
-
-                            </a>
-                        </div>
+        <div class="header_container">
+            <!-- Barra de navegación principal -->
+            <nav class="navbar">
+                <!-- Sección izquierda: logo y menú -->
+                <div class="header-left">
+                    <div class="cmp__logo">
+                        <!-- Enlace al inicio con el logo -->
+                        <a href="index.html">
+                            <img src="/assets/logos/logo-prada.svg" alt="logo-prada" /> <!-- Imagen del logo -->
+                        </a>
                     </div>
-
-
-                </header>
-
-            </div>
+                    <!-- Menú de navegación principal -->
+                    <ul class="menu">
+                        <li><a href="#">REGALOS</a></li> <!-- Cada <li> representa una sección -->
+                        <li><a href="#">MUJER</a></li>
+                        <li><a href="#">HOMBRE</a></li>
+                        <li><a href="#">BOLSOS</a></li>
+                        <li><a href="#">LINEA ROSSA</a></li>
+                        <li><a href="#">JOYERÍA ELEGANTE</a></li>
+                        <li><a href="#">HOGAR</a></li>
+                        <li><a href="#">BELLEZA Y FRAGANCIAS</a></li>
+                        <li><a href="#">PRADASPHERE</a></li>
+                    </ul>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="search" aria-label="Buscar">
+                        <span class="icon icon-search" aria-hidden="true"></span>
+                    </a> <!-- Lupa de búsqueda -->
+                
+                    <a href="#" class="user" aria-label="Cuenta">
+                        <span class="icon icon-user" aria-hidden="true"></span>
+                    </a> <!-- Usuario -->
+                
+                    <a href="#" class="favorite" aria-label="Favoritos">
+                        <span class="icon icon-favorite" aria-hidden="true"></span>
+                    </a> <!-- Corazón -->
+                
+                    <a href="#" class="cart" aria-label="Carrito">
+                        <span class="icon icon-cart" aria-hidden="true"></span>
+                    </a> <!-- Bolsa de compras -->
+                </div>
+                
+            </nav>
         </div>
     </header>
-    <div id="mainContent">
-        <!-- Contenido principal aquí -->
-    </div>
+
+    <!-- Contenedor principal para el contenido del sitio -->
+    <div id="mainContent"></div>
+
+
+
+    <!-- Script para detectar navegación con Tab y aplicar clase de accesibilidad -->
+    <script>
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('is-tabbing');
+            }
+        });
+    </script>
 </body>
 
 </html>
-

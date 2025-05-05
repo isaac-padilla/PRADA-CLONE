@@ -1,13 +1,19 @@
-v
-
-/* Quita los bordes al usar la tecla tabulación si no está en modo "tabbing" */
+/* Quita bordes visuales si no se está navegando con Tab (mejora estética sin afectar accesibilidad con Tab) */
 body:not(.is-tabbing) * {
     outline: none;
     box-shadow: none;
     -webkit-tap-highlight-color: transparent;
+    /* Elimina el resaltado azul en dispositivos móviles */
 }
 
-/* Asegura que estos elementos HTML antiguos/semanáticos funcionen bien en todos los navegadores */
+/* Aplica box-sizing universal para evitar errores en tamaños por padding/border */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Compatibilidad para etiquetas semánticas en navegadores antiguos */
 article,
 aside,
 header,
@@ -16,115 +22,187 @@ section {
     display: block;
 }
 
-/* Variables CSS globales para colores y fuente principal */
+/* Define variables de colores y fuente base para todo el proyecto */
 :root {
-    --white: rgb(255, 255, 255);
-    --black: rgb(0, 0, 0);
+    --white: #fff;
+    --black: #000;
     font-family: 'GT America', sans-serif;
-
 }
 
+/* Importa fuente personalizada GT America desde archivos locales e iconos */
 @font-face {
-    font-family: 'GT America', sans-serif;
+    font-family: 'GT America';
     src: url('/assets/fonts/GT-America-Standard-Regular.woff2') format('woff2'),
-        url('/assets/fonts/GT-America-Standard-Regular.woff') format('woff');
+         url('/assets/fonts/GT-America-Standard-Regular.woff') format('woff'),
+         url('/assets/fonts/GT-America-Standard-Regular.ttf') format('truetype'),
+         url('/assets/fonts/GT-America-Standard-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 
-/* Tamaño de fuente base: 1rem = 16px */
+@font-face {
+    font-family: 'PradaIcons';
+    src: url('/assets/fonts/prada-icons.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.icon {
+    font-family: 'PradaIcons';
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    text-align: center;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: none !important;
+    /* 🔥 Asegura que no haya subrayado */
+    user-select: none;
+    /* 🔥 Evita que parezca texto seleccionable */
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-search::before {
+    content: '\E901';
+
+    /* 🔍 Lupa */
+
+}
+
+.icon-user::before {
+    content: '\E902';
+    /* 👤 Usuario */
+}
+
+.icon-favorite::before {
+    content: '\E900';
+    /* ❤️ Favoritos */
+}
+
+.icon-cart::before {
+    content: '\E904';
+    /* 👜 Carrito */
+}
+
+
+
+
+/* Define tamaño base de fuente en la raíz (útil para rem) */
 html {
     font-size: 16px;
+    text-decoration: none;
+    user-select: none;
+    /* No deja seleccionar como texto */
+    cursor: default;
+    /* No muestra el cursor de texto */
 }
 
-/* Estilo base para el header */
-.header {
-    display: block;
-    unicode-bidi: isolate;
+/* Estilos generales del header superior */
+.main-header {
     background-color: var(--white);
-    font-family: var(--font-primary);
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'GT America', sans-serif;
 }
 
-/* Contenedor principal del header, permite animaciones suaves */
-.header__container {
+/* Contenedor del header con transición para futuras animaciones */
+.header_container {
     height: 100%;
     transition: all 0.4s linear 0.1s;
-    border-bottom: 1px solid #e0e0e0;
 }
 
-/* El nav se centra, tiene ancho máximo y organiza elementos en fila */
-.header__nav {
+/* Barra de navegación principal alineada y centrada */
+.navbar {
     max-width: 1680px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
-    padding: 1.2rem 2rem;
 }
 
-/* Logo de la izquierda */
+/* Tamaño específico del logo */
 .cmp__logo {
-    width: 7.938rem;
+    width: 7.813rem;
 }
 
+/* Imagen del logo escala proporcional al contenedor */
 .cmp__logo img {
-    width: 100%;
+    width: 7.813rem;
     height: auto;
 }
 
-/* Contenedor del logo + menú (izquierda) */
+/* Agrupación izquierda del header (logo + menú) */
+
 .header-left {
+    padding: 0 1rem;
+    /* solo a izquierda y derecha */
     display: flex;
     align-items: center;
-    gap: 3rem;
-    /* Separación entre logo y menú */
+    /* asegúrate de mantener el centrado vertical */
+    gap: 2rem;
 }
 
-/* Menú horizontal sin viñetas */
+/* Menú principal horizontal sin viñetas ni espacios extra */
 .menu {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     list-style: none;
-    margin: 0;
+    margin: 0.7rem;
     padding: 0;
+    justify-content: start;
+    margin-top: 4px;
+    /* Margen superior */
+    margin-right: 15px;
+    /* Margen derecho */
+    margin-left: 1rem;
+    /* Margen izquierdo */
+
 }
 
-/* Enlaces del menú */
-.menu-item-header a {
+.menu li {
+    flex-shrink: 0;
+}
+
+/* Estilos para enlaces del menú principal */
+.menu li a {
     text-decoration: none;
     color: var(--black);
-    font-size: 0.75rem;
-    /* 12px */
+    font-size: 0.6875rem;
     font-weight: bold;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     transition: color 0.2s ease-in-out;
 }
 
-.menu-item-header a:hover {
+/* Color de enlace al pasar el mouse */
+.menu li a:hover {
     color: #999;
 }
 
-/* Contenedor de los iconos (derecha) */
+/* Agrupación derecha del header con íconos interactivos */
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1.6rem;
+    gap: 1rem; /* Espacio entre iconos */
+    margin-left: auto;
+    padding-right: 20px;
 }
 
-.header-right button {
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    cursor: pointer;
+/* Enlaces que actúan como íconos */
+.header-right a {
+    font-size: 1.5rem;
     color: var(--black);
-    padding: 0.4rem;
-    transition: transform 0.2s ease;
+    text-decoration: none; /* Elimina subrayado */
+    transition: transform 0.2s ease, color 0.2s ease;
+    cursor: pointer;
 }
 
-.header-right button:hover {
+/* Animación al pasar el cursor sobre los íconos */
+.header-right a:hover {
     transform: scale(1.1);
     color: #777;
 }
